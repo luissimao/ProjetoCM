@@ -1,19 +1,26 @@
 package com.example.projetocm.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.projetocm.LoginAdmin
 import com.example.projetocm.databinding.FragmentLoginBinding
 import com.example.projetocm.model.ChatUser
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +34,9 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonAdmin.setOnClickListener {
+
+            val intent = Intent (getActivity(), LoginAdmin::class.java)
+            getActivity()?.startActivity(intent)
 
         }
 
