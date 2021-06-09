@@ -86,5 +86,15 @@
         app:layout_constraintStart_toStartOf="@+id/username_inputLayout"
         app:layout_constraintTop_toBottomOf="@+id/username_inputLayout" />
 
+    <Button
+        android:id="@+id/buttonAdmin"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="150dp"
+        android:text="Admin"
+        app:layout_constraintEnd_toEndOf="@+id/username_inputLayout"
+        app:layout_constraintStart_toStartOf="@+id/username_inputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/username_inputLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

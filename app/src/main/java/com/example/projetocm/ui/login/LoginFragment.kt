@@ -26,6 +26,10 @@ class LoginFragment : Fragment() {
             authenticateTheUser()
         }
 
+        binding.buttonAdmin.setOnClickListener {
+
+        }
+
         return binding.root
     }
 
