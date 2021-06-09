@@ -20,6 +20,9 @@
             app:popExitAnim="@anim/to_bottom"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_loginAdmin"
+            app:destination="@id/loginAdmin" />
     </fragment>
     <fragment
         android:id="@+id/channelFragment"
@@ -77,4 +80,26 @@
             app:popUpTo="@id/usersFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/loginAdmin"
+        android:name="com.example.projetocm.LoginAdmin"
+        android:label="fragment_login_admin"
+        tools:layout="@layout/fragment_login_admin" >
+        <action
+            android:id="@+id/action_loginAdmin_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginAdmin_to_menuAdmin"
+            app:destination="@id/menuAdmin" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuAdmin"
+        android:name="com.example.projetocm.MenuAdmin"
+        android:label="fragment_menu_admin"
+        tools:layout="@layout/fragment_menu_admin" >
+        <action
+            android:id="@+id/action_menuAdmin_to_channelFragment"
+            app:destination="@id/channelFragment" />
+    </fragment>
+
 </navigation>
