@@ -34,7 +34,6 @@ class LoginFragment : Fragment() {
         }
 
         binding.buttonAdmin.setOnClickListener {
-
             val intent = Intent (getActivity(), LoginAdmin::class.java)
             getActivity()?.startActivity(intent)
 

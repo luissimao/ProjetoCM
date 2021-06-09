@@ -90,7 +90,7 @@
         android:id="@+id/buttonUtilizador"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="130dp"
         android:text="Utilizador"
         app:layout_constraintEnd_toEndOf="@+id/username_inputLayout"
         app:layout_constraintStart_toStartOf="@+id/username_inputLayout"
