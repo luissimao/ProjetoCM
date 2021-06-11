@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_channels"
         android:title="@string/channels" />
     <item
+        android:id="@+id/products_menu"
+        android:icon="@drawable/ic_channels"
+        android:title="@string/products"/>
+    <item
         android:id="@+id/groups_menu"
         android:icon="@drawable/ic_groups"
         android:title="@string/groups" />

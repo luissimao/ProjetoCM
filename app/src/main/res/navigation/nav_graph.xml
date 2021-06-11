@@ -54,6 +54,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/channelFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_channelFragment_to_listarProdutos"
+            app:destination="@id/listarProdutos" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -101,5 +104,10 @@
             android:id="@+id/action_menuAdmin_to_channelFragment"
             app:destination="@id/channelFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/listarProdutos"
+        android:name="com.example.projetocm.ListarProdutos"
+        android:label="fragment_listar_produtos"
+        tools:layout="@layout/fragment_listar_produtos" />
 
 </navigation>

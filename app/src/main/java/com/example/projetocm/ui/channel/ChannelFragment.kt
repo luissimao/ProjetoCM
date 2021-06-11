@@ -122,6 +122,10 @@ class ChannelFragment : Fragment() {
 
     private fun setupDrawer() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            if (menuItem.itemId == R.id.products_menu) {
+                findNavController().navigate(R.id.action_channelFragment_to_listarProdutos)
+                //showToast("Products Page")
+            }
             if (menuItem.itemId == R.id.logout_menu) {
                 logout()
             }
