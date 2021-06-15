@@ -5,18 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="5dp">
 
     <ImageView
-        android:layout_width="@dimen/exomedia_leanback_controls_height"
+        android:id="@+id/imageProduct"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_marginStart="25dp"
         android:src="@drawable/ic_channels">
     </ImageView>
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10pt">
 
         <TextView
             android:id="@+id/name_content"
@@ -24,14 +26,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="100dp"
             android:layout_marginBottom="10dp"
             android:text="Nome"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textStyle="bold">
         </TextView>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/name_content"
@@ -50,20 +52,23 @@
                 android:id="@+id/price_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="75dp"
                 android:text="Preço">
             </TextView>
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_below="@id/linearLayout"
+            android:text="Adicionar"
+            app:icon="@drawable/ic_add">
+        </Button>
+
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        app:icon="@drawable/ic_add">
-    </Button>
+
 
 </LinearLayout>

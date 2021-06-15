@@ -30,8 +30,12 @@ class MenuAdmin : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentMenuAdminBinding.inflate(inflater, container, false)
+
+        //Toolbar
+        binding.toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         binding.messengerButton.setOnClickListener {
 

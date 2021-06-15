@@ -3,10 +3,10 @@
     <item
         android:id="@+id/channels_menu"
         android:icon="@drawable/ic_channels"
-        android:title="@string/channels" />
+        android:title="@string/mensagens" />
     <item
         android:id="@+id/products_menu"
-        android:icon="@drawable/ic_channels"
+        android:icon="@drawable/ic_product"
         android:title="@string/products"/>
     <item
         android:id="@+id/groups_menu"
@@ -19,5 +19,5 @@
     <item
         android:id="@+id/logout_menu"
         android:icon="@drawable/ic_logout"
-        android:title="@string/log_out" />
+        android:title="@string/sair" />
 </menu>
