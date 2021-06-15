@@ -103,11 +103,19 @@
         <action
             android:id="@+id/action_menuAdmin_to_channelFragment"
             app:destination="@id/channelFragment" />
+        <action
+            android:id="@+id/action_menuAdmin_to_listarReservas"
+            app:destination="@id/listarReservas" />
     </fragment>
     <fragment
         android:id="@+id/listarProdutos"
         android:name="com.example.projetocm.ListarProdutos"
         android:label="fragment_listar_produtos"
         tools:layout="@layout/fragment_listar_produtos" />
+    <fragment
+        android:id="@+id/listarReservas"
+        android:name="com.example.projetocm.ListarReservas"
+        android:label="fragment_listar_reservas"
+        tools:layout="@layout/fragment_listar_reservas" />
 
 </navigation>

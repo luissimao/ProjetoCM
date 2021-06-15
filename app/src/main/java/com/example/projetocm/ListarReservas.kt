@@ -6,28 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.projetocm.adapter.ProdutoAdapter
+import com.example.projetocm.adapter.ReservaAdapter
+import com.example.projetocm.api.Encomendas
 import com.example.projetocm.api.EndPoints
-import com.example.projetocm.api.Produtos
 import com.example.projetocm.api.ServiceBuilder
-import com.example.projetocm.databinding.FragmentListarProdutosBinding
+import com.example.projetocm.databinding.FragmentListarReservasBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListarProdutos : Fragment() {
+class ListarReservas: Fragment() {
 
-    private lateinit var produtos: List<Produtos>
-    private var _binding: FragmentListarProdutosBinding? = null
+    private lateinit var encomendas: List<Encomendas>
+    private var _binding: FragmentListarReservasBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentListarProdutosBinding.inflate(inflater, container, false)
+        _binding = FragmentListarReservasBinding.inflate(inflater, container, false)
 
         //Toolbar
         binding.toolbar.setNavigationOnClickListener {
@@ -35,21 +34,19 @@ class ListarProdutos : Fragment() {
         }
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
-        val call = request.getProdutos()
-        call.enqueue(object : Callback<List<Produtos>> {
-            override fun onResponse(call: Call<List<Produtos>>, response: Response<List<Produtos>>) {
+        val call = request.getEncomendas()
+        call.enqueue(object : Callback<List<Encomendas>> {
+            override fun onResponse(call: Call<List<Encomendas>>, response: Response<List<Encomendas>>) {
                 if(response.isSuccessful) {
-                    produtos = response.body()!!
-                    produtos?.let {
+                    encomendas = response.body()!!
+                    encomendas?.let {
                         //RecyclerView
-                        binding.recyclerViewProductList.layoutManager = LinearLayoutManager(requireContext())
-                        binding.recyclerViewProductList.adapter = ProdutoAdapter(produtos)
-                        binding.recyclerViewProductList.addItemDecoration(
-                            DividerItemDecoration(activity, 1))
+                        binding.recyclerViewReservaList.layoutManager = LinearLayoutManager(requireContext())
+                        binding.recyclerViewReservaList.adapter = ReservaAdapter(encomendas)
                     }
                 }
             }
-            override fun onFailure(call: Call<List<Produtos>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Encomendas>>, t: Throwable) {
                 Toast.makeText(activity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
 
@@ -62,5 +59,4 @@ class ListarProdutos : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

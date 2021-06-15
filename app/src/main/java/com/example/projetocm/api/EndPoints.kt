@@ -5,6 +5,7 @@ import retrofit2.http.*
 
 interface EndPoints {
 
+    //Reservas -------------------------------------------------------------------------------------
     @GET("produto")
     fun getProdutos(): Call<List<Produtos>>
 
@@ -26,5 +27,9 @@ interface EndPoints {
     fun createProduto(@Field("titulo") titulo: String?, @Field("preco") preco: String?,
                       @Field("categoria") categoria: String?,
                   @Field("stock") stock: String?): Call<OutputPost>
+
+    //Encomendas -----------------------------------------------------------------------------------
+    @GET("encomenda")
+    fun getEncomendas(): Call<List<Encomendas>>
 
 }

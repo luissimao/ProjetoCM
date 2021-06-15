@@ -5,7 +5,7 @@ import java.util.*
 data class Encomendas(
     val id: Int,
     val nomeCliente: String,
-    val data: Date,
+    val data: String,
     val artigoNome: String,
     val qtd: Int,
     val levantarLoja: String,
