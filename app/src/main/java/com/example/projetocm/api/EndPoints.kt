@@ -1,26 +1,30 @@
 package com.example.projetocm.api
 
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface EndPoints {
 
     @GET("produto")
     fun getProdutos(): Call<List<Produtos>>
 
-    @FormUrlEncoded
-    @POST("criarProduto")
-    fun addProduto(@Field("titulo") titulo: String,
-                  @Field("preco") preco: Float,
-                  @Field("categoria") categoria: String,
-                  @Field("stock") stock: Int,
-    ): Call<Produtos>
+    @GET("produto/{id}")
+    fun getProdutosPorId(@Path("id") id: Int): Call<Produtos>
 
     @FormUrlEncoded
     @POST("eliminarProduto")
-    fun deleteProduto(@Field("id") id: Int): Call<Produtos>
+    fun deleteProduto(@Field("id") id: Int): Call<OutputPost>
+
+    @FormUrlEncoded
+    @POST("alterarProduto")
+    fun updateProduto(@Field("id") id: Int, @Field("titulo") titulo: String?,
+                  @Field("preco") preco: Float?, @Field("categoria") categoria: String?,
+                  @Field("stock") stock: Int?): Call<OutputPost>
+
+    @FormUrlEncoded
+    @POST("criarProduto")
+    fun createProduto(@Field("titulo") titulo: String?, @Field("preco") preco: String?,
+                      @Field("categoria") categoria: String?,
+                  @Field("stock") stock: String?): Call<OutputPost>
 
 }
