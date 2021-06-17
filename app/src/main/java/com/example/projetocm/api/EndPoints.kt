@@ -37,11 +37,12 @@ interface EndPoints {
     @POST("criarEncomenda")
     fun createEncomenda(
         @Field("nomeCliente") nomeCliente: String?,
-        @Field("data") data: Date?,
-        @Field("qtd") qtd: Int?,
-        @Field("levantarLoja") levantarLoja: String?,
+        @Field("data") data: String,
+        @Field("artigoNome") artigoNome: String,
+        @Field("qtd") qtd: Int,
+        @Field("levantarLoja") levantarLoja: String,
         @Field("descricao") descricao: String?,
-        @Field("precoTotal") precoTotal: Float?,
+        @Field("precoTotal") precoTotal: Float,
     ): Call<Encomendas>
 
 }

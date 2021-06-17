@@ -1,11 +1,16 @@
 package com.example.projetocm.ui.login
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.contentValuesOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.projetocm.R
 import com.example.projetocm.databinding.FragmentLoginAdminBinding
 import com.example.projetocm.databinding.FragmentLoginBinding
 import com.example.projetocm.model.ChatUser
@@ -40,6 +45,7 @@ class LoginFragment : Fragment() {
     private fun authenticateTheUser() {
         val firstName = binding.firstNameEditText.text.toString()
         val username = binding.usernameEditText.text.toString()
+
         if (validateInput(firstName, binding.firstNameInputLayout) &&
             validateInput(username, binding.usernameInputLayout)
         ) {

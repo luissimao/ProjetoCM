@@ -22,7 +22,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListarProdutos : Fragment() {
+class ListarProdutos : Fragment(), ProdutoAdapter.CallbackInterface {
+
 
     private lateinit var produtos: List<Produtos>
     private var _binding: FragmentListarProdutosBinding? = null
@@ -39,11 +40,6 @@ class ListarProdutos : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        binding.btncarrinho.setOnClickListener{
-            val intent = Intent (activity, CarrinhoCompras::class.java)
-            startActivity(intent)
-        }
-
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val call = request.getProdutos()
         call.enqueue(object : Callback<List<Produtos>> {
@@ -53,11 +49,10 @@ class ListarProdutos : Fragment() {
                     produtos.let {
                         //RecyclerView
                         binding.recyclerViewProductList.layoutManager = LinearLayoutManager(requireContext())
-                        binding.recyclerViewProductList.adapter = ProdutoAdapter(produtos)
+                        binding.recyclerViewProductList.adapter = ProdutoAdapter(produtos, this@ListarProdutos)
                         binding.recyclerViewProductList.addItemDecoration(
                             DividerItemDecoration(activity, 1))
                     }
-                    //Toast.makeText(activity, nameProd, Toast.LENGTH_LONG).show()
                 }
             }
             override fun onFailure(call: Call<List<Produtos>>, t: Throwable) {
@@ -69,11 +64,18 @@ class ListarProdutos : Fragment() {
         return binding.root
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun passResultCallback(price: String) {
+        binding.btncarrinho.setOnClickListener{
+            val intent = Intent (activity, CarrinhoCompras::class.java)
+            intent.putExtra("price", price)
+            Toast.makeText(context, price, Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+        }
     }
 
 }

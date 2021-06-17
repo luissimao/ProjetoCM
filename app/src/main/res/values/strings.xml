@@ -21,8 +21,6 @@
 
     <!-- Shared Preferences -->
     <string name="preference_file_key">SP</string>
-    <string name="idSharedPref">idProd</string>
     <string name="nameSharedPref">nameProd</string>
-    <string name="qtdSharedPref">qtdProd</string>
-    <string name="priceSharedPref">priceProd</string>
+    <string name="toast_11">Inseriu</string>
 </resources>
