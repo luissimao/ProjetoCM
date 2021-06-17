@@ -106,16 +106,32 @@
         <action
             android:id="@+id/action_menuAdmin_to_listarReservas"
             app:destination="@id/listarReservas" />
+        <action
+            android:id="@+id/action_menuAdmin_to_loginAdmin"
+            app:destination="@id/loginAdmin" />
     </fragment>
     <fragment
         android:id="@+id/listarProdutos"
         android:name="com.example.projetocm.ListarProdutos"
         android:label="fragment_listar_produtos"
-        tools:layout="@layout/fragment_listar_produtos" />
+        tools:layout="@layout/fragment_listar_produtos" >
+        <action
+            android:id="@+id/action_listarProdutos_to_carrinhoCompras"
+            app:destination="@id/carrinhoCompras" />
+    </fragment>
     <fragment
         android:id="@+id/listarReservas"
         android:name="com.example.projetocm.ListarReservas"
         android:label="fragment_listar_reservas"
         tools:layout="@layout/fragment_listar_reservas" />
+    <fragment
+        android:id="@+id/carrinhoCompras"
+        android:name="com.example.projetocm.CarrinhoCompras"
+        android:label="fragment_carrinho_compras"
+        tools:layout="@layout/fragment_carrinho_compras" >
+        <action
+            android:id="@+id/action_carrinhoCompras_to_listarProdutos"
+            app:destination="@id/listarProdutos" />
+    </fragment>
 
 </navigation>

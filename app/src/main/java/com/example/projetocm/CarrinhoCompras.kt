@@ -19,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListarProdutos : Fragment() {
+class CarrinhoCompras : Fragment() {
 
     private lateinit var produtos: List<Produtos>
     private var _binding: FragmentListarProdutosBinding? = null
@@ -36,38 +36,8 @@ class ListarProdutos : Fragment() {
             requireActivity().onBackPressed()
         }
 
-        binding.btncarrinho.setOnClickListener{
-            val action = ListarProdutosDirections.actionListarProdutosToCarrinhoCompras()
-            findNavController().navigate(action)
-        }
-
-
-
-        val request = ServiceBuilder.buildService(EndPoints::class.java)
-        val call = request.getProdutos()
-        call.enqueue(object : Callback<List<Produtos>> {
-            override fun onResponse(call: Call<List<Produtos>>, response: Response<List<Produtos>>) {
-                if(response.isSuccessful) {
-                    produtos = response.body()!!
-                    produtos?.let {
-                        //RecyclerView
-                        binding.recyclerViewProductList.layoutManager = LinearLayoutManager(requireContext())
-                        binding.recyclerViewProductList.adapter = ProdutoAdapter(produtos)
-                        binding.recyclerViewProductList.addItemDecoration(
-                            DividerItemDecoration(activity, 1))
-                    }
-                }
-            }
-            override fun onFailure(call: Call<List<Produtos>>, t: Throwable) {
-                Toast.makeText(activity, "${t.message}", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-
         return binding.root
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,5 +1,6 @@
 package com.example.projetocm
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.projetocm.databinding.FragmentMenuAdminBinding
 import com.example.projetocm.model.ChatUser
+import com.google.firebase.auth.FirebaseAuth
 
 class MenuAdmin : Fragment() {
 
@@ -20,11 +22,6 @@ class MenuAdmin : Fragment() {
     ): View {
         _binding = FragmentMenuAdminBinding.inflate(inflater, container, false)
 
-        //Toolbar
-        binding.toolbar.setNavigationOnClickListener {
-            requireActivity().onBackPressed()
-        }
-
         binding.messengerButton.setOnClickListener {
 
             val firstName = "Admin"
@@ -33,6 +30,13 @@ class MenuAdmin : Fragment() {
             val chatUser = ChatUser(firstName, username)
             val action = MenuAdminDirections.actionMenuAdminToChannelFragment(chatUser)
             findNavController().navigate(action)
+
+        }
+
+        binding.logoutButton.setOnClickListener {
+
+            FirebaseAuth.getInstance().signOut()
+            findNavController().navigate(R.id.action_menuAdmin_to_loginAdmin)
 
         }
 
