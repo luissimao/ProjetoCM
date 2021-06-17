@@ -16,6 +16,8 @@ import com.example.projetocm.api.Produtos
 
 
 class ProdutoAdapter(val produtos: List<Produtos>): RecyclerView.Adapter<ProdutoAdapter.ViewHolder>() {
+    var price: Float = 0.0F
+    lateinit var produtoAdd: String
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.recycler_product_line, parent, false)
@@ -27,19 +29,15 @@ class ProdutoAdapter(val produtos: List<Produtos>): RecyclerView.Adapter<Produto
         holder.view.findViewById<TextView>(R.id.name_content).text = produtos.titulo
         holder.view.findViewById<TextView>(R.id.categoria_content).text = produtos.categoria
         holder.view.findViewById<TextView>(R.id.price_content).text = produtos.preco.toString()
+        //findViewById<TextView>(R.id.qtd)
 
         holder.view.findViewById<Button>(R.id.btn_add).setOnClickListener {
             val context = holder.view.context
-            val sharedPref: SharedPreferences = context.getSharedPreferences(
-                R.string.preference_file_key.toString(), Context.MODE_PRIVATE)
-                with(sharedPref.edit()){
-                    putInt(R.string.idSharedPref.toString(), produtos.id)
-                    Log.d("Values", "$")
-                    commit()
-            }
 
-            /*val idProd = sharedPref.getInt(R.string.idSharedPref.toString(), 0)
-            Toast.makeText(context, idProd.toString(), Toast.LENGTH_LONG).show()*/
+            price = (price + produtos.preco)
+            produtoAdd = produtos.titulo
+            Toast.makeText(context, "Cliente: $produtoAdd = $price", Toast.LENGTH_LONG).show()
+
         }
 
     }

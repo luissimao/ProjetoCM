@@ -34,22 +34,14 @@ class ListarProdutos : Fragment() {
     ): View {
         _binding = FragmentListarProdutosBinding.inflate(inflater, container, false)
 
-        //Variables for Shared Preferences
-        val sharedPref: SharedPreferences = this.requireActivity().getSharedPreferences(
-            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-        val idProd = sharedPref.getInt(getString(R.string.idSharedPref), 0)
-        //val nameProd = sharedPref.getString(getString(R.string.nameSharedPref), "")
-        //val qtdProd = sharedPref.getInt(getString(R.string.qtdSharedPref), 0)
-        //val priceProd = sharedPref.getFloat(getString(R.string.qtdSharedPref), 0.0F)
-
         //Toolbar
         binding.toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
 
         binding.btncarrinho.setOnClickListener{
-            val action = ListarProdutosDirections.actionListarProdutosToCarrinhoCompras()
-            findNavController().navigate(action)
+            val intent = Intent (activity, CarrinhoCompras::class.java)
+            startActivity(intent)
         }
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
@@ -58,7 +50,7 @@ class ListarProdutos : Fragment() {
             override fun onResponse(call: Call<List<Produtos>>, response: Response<List<Produtos>>) {
                 if(response.isSuccessful) {
                     produtos = response.body()!!
-                    produtos?.let {
+                    produtos.let {
                         //RecyclerView
                         binding.recyclerViewProductList.layoutManager = LinearLayoutManager(requireContext())
                         binding.recyclerViewProductList.adapter = ProdutoAdapter(produtos)
