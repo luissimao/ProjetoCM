@@ -14,6 +14,7 @@ import com.example.projetocm.adapter.ProdutoAdapter
 import com.example.projetocm.api.EndPoints
 import com.example.projetocm.api.Produtos
 import com.example.projetocm.api.ServiceBuilder
+import com.example.projetocm.databinding.FragmentCarrinhoComprasBinding
 import com.example.projetocm.databinding.FragmentListarProdutosBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,15 +22,14 @@ import retrofit2.Response
 
 class CarrinhoCompras : Fragment() {
 
-    private lateinit var produtos: List<Produtos>
-    private var _binding: FragmentListarProdutosBinding? = null
+    private var _binding: FragmentCarrinhoComprasBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentListarProdutosBinding.inflate(inflater, container, false)
+        _binding = FragmentCarrinhoComprasBinding.inflate(inflater, container, false)
 
         //Toolbar
         binding.toolbar.setNavigationOnClickListener {

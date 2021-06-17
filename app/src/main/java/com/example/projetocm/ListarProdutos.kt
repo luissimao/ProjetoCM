@@ -1,5 +1,8 @@
 package com.example.projetocm
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
@@ -31,6 +34,14 @@ class ListarProdutos : Fragment() {
     ): View {
         _binding = FragmentListarProdutosBinding.inflate(inflater, container, false)
 
+        //Variables for Shared Preferences
+        val sharedPref: SharedPreferences = this.requireActivity().getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+        val idProd = sharedPref.getInt(getString(R.string.idSharedPref), 0)
+        //val nameProd = sharedPref.getString(getString(R.string.nameSharedPref), "")
+        //val qtdProd = sharedPref.getInt(getString(R.string.qtdSharedPref), 0)
+        //val priceProd = sharedPref.getFloat(getString(R.string.qtdSharedPref), 0.0F)
+
         //Toolbar
         binding.toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
@@ -40,8 +51,6 @@ class ListarProdutos : Fragment() {
             val action = ListarProdutosDirections.actionListarProdutosToCarrinhoCompras()
             findNavController().navigate(action)
         }
-
-
 
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val call = request.getProdutos()
@@ -56,6 +65,7 @@ class ListarProdutos : Fragment() {
                         binding.recyclerViewProductList.addItemDecoration(
                             DividerItemDecoration(activity, 1))
                     }
+                    //Toast.makeText(activity, nameProd, Toast.LENGTH_LONG).show()
                 }
             }
             override fun onFailure(call: Call<List<Produtos>>, t: Throwable) {

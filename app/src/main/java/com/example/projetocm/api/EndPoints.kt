@@ -2,6 +2,7 @@ package com.example.projetocm.api
 
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.*
 
 interface EndPoints {
 
@@ -31,5 +32,16 @@ interface EndPoints {
     //Encomendas -----------------------------------------------------------------------------------
     @GET("encomenda")
     fun getEncomendas(): Call<List<Encomendas>>
+
+    @FormUrlEncoded
+    @POST("criarEncomenda")
+    fun createEncomenda(
+        @Field("nomeCliente") nomeCliente: String?,
+        @Field("data") data: Date?,
+        @Field("qtd") qtd: Int?,
+        @Field("levantarLoja") levantarLoja: String?,
+        @Field("descricao") descricao: String?,
+        @Field("precoTotal") precoTotal: Float?,
+    ): Call<Encomendas>
 
 }

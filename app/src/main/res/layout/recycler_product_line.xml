@@ -11,8 +11,7 @@
         android:id="@+id/imageProduct"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:layout_marginStart="25dp"
-        android:src="@drawable/ic_channels">
+        android:layout_marginStart="25dp">
     </ImageView>
 
     <RelativeLayout

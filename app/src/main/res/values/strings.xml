@@ -18,4 +18,11 @@
     <string name="products">Produtos</string>
     <string name="mensagens">Mensagens</string>
     <string name="sair">Sair</string>
+
+    <!-- Shared Preferences -->
+    <string name="preference_file_key">SP</string>
+    <string name="idSharedPref">idProd</string>
+    <string name="nameSharedPref">nameProd</string>
+    <string name="qtdSharedPref">qtdProd</string>
+    <string name="priceSharedPref">priceProd</string>
 </resources>
