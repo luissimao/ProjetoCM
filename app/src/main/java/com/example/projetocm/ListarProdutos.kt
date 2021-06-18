@@ -22,8 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListarProdutos : Fragment(), ProdutoAdapter.CallbackInterface {
-
+class ListarProdutos : Fragment() {
 
     private lateinit var produtos: List<Produtos>
     private var _binding: FragmentListarProdutosBinding? = null
@@ -40,6 +39,11 @@ class ListarProdutos : Fragment(), ProdutoAdapter.CallbackInterface {
             requireActivity().onBackPressed()
         }
 
+        binding.btncarrinho.setOnClickListener{
+            val intent = Intent (activity, CarrinhoCompras::class.java)
+            startActivity(intent)
+        }
+
         val request = ServiceBuilder.buildService(EndPoints::class.java)
         val call = request.getProdutos()
         call.enqueue(object : Callback<List<Produtos>> {
@@ -49,10 +53,11 @@ class ListarProdutos : Fragment(), ProdutoAdapter.CallbackInterface {
                     produtos.let {
                         //RecyclerView
                         binding.recyclerViewProductList.layoutManager = LinearLayoutManager(requireContext())
-                        binding.recyclerViewProductList.adapter = ProdutoAdapter(produtos, this@ListarProdutos)
+                        binding.recyclerViewProductList.adapter = ProdutoAdapter(produtos)
                         binding.recyclerViewProductList.addItemDecoration(
                             DividerItemDecoration(activity, 1))
                     }
+
                 }
             }
             override fun onFailure(call: Call<List<Produtos>>, t: Throwable) {
@@ -64,18 +69,11 @@ class ListarProdutos : Fragment(), ProdutoAdapter.CallbackInterface {
         return binding.root
     }
 
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun passResultCallback(price: String) {
-        binding.btncarrinho.setOnClickListener{
-            val intent = Intent (activity, CarrinhoCompras::class.java)
-            intent.putExtra("price", price)
-            Toast.makeText(context, price, Toast.LENGTH_SHORT).show()
-            startActivity(intent)
-        }
     }
 
 }

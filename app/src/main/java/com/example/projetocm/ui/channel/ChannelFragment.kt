@@ -135,10 +135,7 @@ class ChannelFragment : Fragment() {
         val headerView = binding.navigationView.getHeaderView(0)
         val headerAvatar = headerView.findViewById<AvatarView>(R.id.avatarView)
         headerAvatar.setUserData(currentUser)
-        val headerId = headerView.findViewById<TextView>(R.id.id_textView)
-        headerId.text = currentUser.id
-        val headerName = headerView.findViewById<TextView>(R.id.name_textView)
-        headerName.text = currentUser.name
+
     }
 
     private fun deleteChannel(channel: Channel) {

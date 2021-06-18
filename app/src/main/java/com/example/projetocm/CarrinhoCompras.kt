@@ -37,7 +37,7 @@ class CarrinhoCompras: AppCompatActivity() {
         val price = findViewById<TextView>(R.id.priceTotal)
 
         //val levantarLoja = findViewById<RadioGroup>(R.id.radioButton)
-        val levantarLoja = "Não"
+        val levantarLoja = "Sim"
         val precoTotal = intent.getStringExtra("price").toString()
         val description = findViewById<EditText>(R.id.reservaDesc).text.toString()
         val dateVar = LocalDate.now().toString()

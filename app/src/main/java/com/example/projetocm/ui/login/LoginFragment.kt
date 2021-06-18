@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
     private fun validateInput(inputText: String, textInputLayout: TextInputLayout): Boolean {
         return if (inputText.length <= 3) {
             textInputLayout.isErrorEnabled = true
-            textInputLayout.error = "* Minimum 4 Characters Allowed"
+            textInputLayout.error = "Mínimo 4 caracteres"
             false
         } else {
             textInputLayout.isErrorEnabled = false
